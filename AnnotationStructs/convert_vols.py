@@ -48,6 +48,7 @@ with open(os.path.join(os.path.join(out_dir, 'info_fullres.json')), 'w') as info
     json.dump(info, info_file)
 
 generate_scales_info.main(['', os.path.join(out_dir, 'info_fullres.json'), '--encoding', 'compressed_segmentation',
-                           out_dir, '--max-scales', '1', '--target-chunk-size', '128'])
+                           out_dir, '--max-scales', '10', '--target-chunk-size', '128'])
 
 volume_to_precomputed.main(['', ni_out, out_dir, '--flat', '--no-gzip'])
+compute_scales.main(['', out_dir, '--downscaling-method', "majority", "--flat", "--no-gzip"])
